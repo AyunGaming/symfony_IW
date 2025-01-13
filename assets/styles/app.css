@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+   
+}
+
 body {
-    background-color: skyblue;
+   background-color: white;
 }
