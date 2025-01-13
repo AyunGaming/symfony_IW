@@ -33,6 +33,6 @@ class SecurityController extends AbstractController
 		// you can also disable the csrf logout
 		$response = $security->logout(false);
 
-		$this->redirect('home');
+		$this->redirectToRoute('homepage');
     }
 }
