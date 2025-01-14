@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+<div class="min-h-screen flex flex-col">
+    <header class="bg-cover bg-center h-80" style="background-image: url('{{asset('img/dovlet-hojayev-rfOFRwKHtJM-unsplash.jpg')}}')">
+        <div class="w-full">
+            <div class="flex flex-row justify-end">
+                <nav class="navbar">
+                    <ul class="flex flex-row gap-4 mr-4 mt-4">
+                        <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Menu</a></li> <!-- menu -->
+                        <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Réservation</a></li> <!-- reservation -->
+                        <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Agenda</a></li> <!-- agenda -->
+                        <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Connexion</a></li> <!-- app_loging -->
+                    </ul>
+                </nav>
+            </div>
+            <div class="flex flex-col text-2xl mt-12">
+                <h1 class="flex justify-center text-4xl font-bold text-yellow-400">Mood Bar</h1>
+                <h2 class="flex justify-center text-lg text-white">Bar & Restaurant</h2>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow">
+        <section class="menu py-20 px-2 bg-gray-100">
+            <h2 class="text-center mb-10 text-4xl font-bold">Le Menu</h2>
+            <ul>
+                {% for category in categories %}
+                    <li class="space-y-4 mb-7">
+                        <h4 class="text-2xl font-bold text-gray-800 pb-4 mb-10 border-b-2 border-yellow-400 ">{{category.name}}</h4>
+                        <ul class="flex flex-wrap gap-5 justify-center">
+                            {% for product in category.products %}
+                                <li class="flex flex-row items-center line bg-white p-3 mb-6 rounded-lg w-96">
+                                    {% if product.quantity > 0 %}
+                                        <img class="rounded-lg w-24 h-24 mr-4" src="{{ asset('img/products/' ~ product.image) }}" />
+                                    {% else %}
+                                        <div class="w-24 h-24 mr-4 flex justify-center items-center bg-black bg-opacity-50 rounded-lg">
+                                            <p class="text-white font-bold text-sm -rotate-45">INDISPONIBLE</p>
+                                        </div>
+                                    {% endif %}
+                                    <div class="flex flex-col">
+                                        <p class="font-bold text-gray-800">{{product.name}}</p>
+                                        <p class="font-bold text-yellow-500">{{product.price}}€</p>
+                                        <p class="font-light text-sm text-gray-800">{{product.description}}</p>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</div>
+{% endblock %}
