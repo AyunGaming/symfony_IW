@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-	form {
+body {
+   background-color: white;
+  
+@layer base {
+   form {
 		@apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-10;
 
 		input {
@@ -14,7 +17,9 @@
 			@apply block text-gray-700 text-sm font-bold mb-2;
 		}
 	}
-
+}  
+  
+@layer components {
 	.btn {
 		@apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
 	}

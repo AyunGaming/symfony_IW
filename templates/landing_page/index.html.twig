@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-cover bg-center h-80" style="background-image: url('{{asset('img/dovlet-hojayev-rfOFRwKHtJM-unsplash.jpg')}}')">
+            <div class="w-full">
+                <div class="flex flex-row justify-end">
+                    <nav class="navbar">
+                        <ul class="flex flex-row gap-4 mr-4 mt-4">
+                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Menu</a></li> <!-- menu -->
+                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Réservation</a></li> <!-- reservation -->
+                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Agenda</a></li> <!-- agenda -->
+                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Connexion</a></li> <!-- app_loging -->
+                        </ul>
+                    </nav>
+                </div>
+                <div class="flex flex-col text-2xl mt-12">
+                    <h1 class="flex justify-center text-4xl font-bold text-yellow-400">Mood Bar</h1>
+                    <h2 class="flex justify-center text-lg text-white">Bar & Restaurant</h2>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow">
+            {% block content %}
+            <section class="about-us py-20 bg-gray-100">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-10">
+                        <h2 class="text-4xl font-bold text-yellow-400">À propos de Mood Bar & Restaurant</h2>
+                        <p class="text-xl text-gray-600 mt-4">Des bières savoureuses et une ambiance conviviale, idéale pour se détendre et partager.</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+                        <div class="w-full md:w-1/2">
+                            <img src="{{ asset('/img/kc-shum-uTi5wiZ_eyk-unsplash.jpg') }}" alt="interieur bar" class="w-full h-[38rem] rounded-lg shadow-lg">
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <p class="text-lg text-gray-700 mb-6">
+                                Le Mood Bar est un lieu où la simplicité et la convivialité se rencontrent autour de plats délicieux et réconfortants. Spécialement conçu pour ceux qui aiment partager, notre menu propose une sélection de tapas, de petites assiettes à déguster entre amis ou en famille.
+                            </p>
+                            <p class="text-lg text-gray-700 mb-6">
+                                Découvrez nos croque-monsieur, nos planches de charcuterie et fromage, nos terrines maison et bien d'autres délices, tous préparés avec soin à partir d'ingrédients frais et de qualité. Chaque bouchée est un véritable voyage gustatif, alliant saveurs classiques et créatives.
+                            </p>
+                            <p class="text-lg text-gray-700 mb-6">
+                                Que ce soit pour un apéritif, un déjeuner léger ou une soirée entre amis, Mood Bar vous offre une atmosphère détendue et chaleureuse où il fait bon passer du temps. Nos tapas sont idéales pour ceux qui aiment grignoter, échanger, et savourer des moments conviviaux.
+                            </p>
+                            <p class="text-lg text-gray-700">
+                                En plus de nos délicieux petits plats, nous proposons une carte de boissons soigneusement sélectionnée, avec des vins, cocktails et bières artisanales qui accompagneront parfaitement votre repas. Venez partager un moment agréable et gustatif avec nous !
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>   
+            <section class="latest-event py-20 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-10">
+                        <h2 class="text-4xl font-bold text-yellow-400">Dernier Événement de l'Agenda</h2>
+                        <p class="text-xl text-gray-600 mt-4">Ne manquez pas notre dernier événement !</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+                        <div class="w-full md:w-1/2">
+                            <!-- Image de l'événement (si disponible) -->
+                            <img src="{{ asset('assets/img/event.jpg') }}" alt="Événement" class="w-full h-64 object-cover rounded-lg shadow-lg">
+                        </div>
+                        <div class="w-full md:w-1/2">
+                            <!-- Détails de l'événement -->
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">**</h3>
+                            <p class="text-lg text-gray-700 mb-6">**</p>
+                            <p class="text-md text-gray-600">Date : **</p>
+                            <p class="text-md text-gray-600">Heure : **</p>
+                        </div>
+                    </div>
+                </div>
+            </section>                     
+            {% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="flex justify-center items-center bg-gray-800 text-gray-400 py-4 px-4">
+            <p>&copy; 2025 Le Mood Bar. Tous droits réservés.</p>
+            <a href="{{ path('homepage') }}" class="ml-4 hover:underline underline-offset-4">Contact</a>
+        </footer>
+    </div>
+{% endblock %}
