@@ -16,27 +16,4 @@ class LandingPageController extends AbstractController
         ]);
     }
 
-    #[Route('/menu', name: 'menu')]
-    public function menu(): Response
-    {
-        return $this->render('menu/index.html.twig', [
-            'title' => 'Notre Menu',
-        ]);
-    }
-
-    #[Route('/reservation', name: 'reservation')]
-    public function reservation(): Response
-    {
-        return $this->render('reservation/index.html.twig', [
-            'title' => 'Réservez une Table',
-        ]);
-    }
-
-    #[Route('/agenda', name: 'agenda')]
-    public function agenda(): Response
-    {
-        return $this->render('agenda/index.html.twig', [
-            'title' => 'Agenda des Événements',
-        ]);
-    }
 }

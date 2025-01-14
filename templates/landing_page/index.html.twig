@@ -8,9 +8,10 @@
                 <div class="flex flex-row justify-end">
                     <nav class="navbar">
                         <ul class="flex flex-row gap-4 mr-4 mt-4">
-                            <li><a href="{{ path('menu') }}" class="text-white hover:text-yellow-500 text-lg">Menu</a></li>
-                            <li><a href="{{ path('reservation') }}" class="text-white hover:text-yellow-500 text-lg">Réservation</a></li>
-                            <li><a href="{{ path('agenda') }}" class="text-white hover:text-yellow-500 text-lg">Agenda</a></li>
+                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Menu</a></li> <!-- menu -->
+                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Réservation</a></li> <!-- reservation -->
+                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Agenda</a></li> <!-- agenda -->
+                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-500 text-lg">Connexion</a></li> <!-- app_loging -->
                         </ul>
                     </nav>
                 </div>
@@ -76,8 +77,9 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-gray-800 text-gray-400 py-4 text-center">
+        <footer class="flex justify-center items-center bg-gray-800 text-gray-400 py-4 px-4">
             <p>&copy; 2025 Le Mood Bar. Tous droits réservés.</p>
+            <a href="{{ path('homepage') }}" class="ml-4 hover:underline underline-offset-4">Contact</a>
         </footer>
     </div>
 {% endblock %}
