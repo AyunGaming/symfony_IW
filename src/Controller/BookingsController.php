@@ -17,6 +17,8 @@ final class BookingsController extends AbstractController{
     #[Route(name: 'app_bookings_index', methods: ['GET'])]
     public function index(BookingsRepository $bookingsRepository): Response
     {
+		$this->denyAccessUnlessGranted('ROLE_WAITER');
+
         return $this->render('bookings/index.html.twig', [
             'bookings' => $bookingsRepository->findAll(),
         ]);
@@ -25,7 +27,6 @@ final class BookingsController extends AbstractController{
     #[Route('/new', name: 'app_bookings_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, TablesRepository $tablesRepository): Response
     {
-		$this->denyAccessUnlessGranted('ROLE_ADMIN');
         $booking = new Bookings();
         $form = $this->createForm(BookingsType::class, $booking);
         $form->handleRequest($request);
