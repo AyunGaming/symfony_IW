@@ -15,14 +15,17 @@ class Bookings
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'bookings')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?users $user = null;
+    #[ORM\JoinColumn(referencedColumnName: 'id', nullable: false)]
+    private ?Users $user = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $orderDate = null;
 
     #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
     private ?Tables $tables = null;
+
+    #[ORM\Column]
+    private ?int $nbPeople = 1;
 
     public function getId(): ?int
     {
@@ -71,6 +74,18 @@ class Bookings
         }
 
         $this->tables = $tables;
+
+        return $this;
+    }
+
+    public function getNbPeople(): ?int
+    {
+        return $this->nbPeople;
+    }
+
+    public function setNbPeople(int $nbPeople): static
+    {
+        $this->nbPeople = $nbPeople;
 
         return $this;
     }

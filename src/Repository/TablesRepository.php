@@ -40,4 +40,11 @@ class TablesRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+	public function findAvailable()
+	{
+		return $this->createQueryBuilder('t')
+			->andWhere('t.reservation IS NULL')
+			->getQuery()
+			->getOneOrNullResult();
+	}
 }

@@ -6,6 +6,7 @@ use App\Repository\TablesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TablesRepository::class)]
+#[ORM\Table(name: 'seats')]
 class Tables
 {
     #[ORM\Id]
@@ -14,7 +15,7 @@ class Tables
     private ?int $id = null;
 
     #[ORM\OneToOne(inversedBy: 'tables', cascade: ['persist', 'remove'])]
-    private ?bookings $reservation = null;
+    private ?Bookings $reservation = null;
 
     public function getId(): ?int
     {
