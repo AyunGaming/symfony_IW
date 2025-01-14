@@ -18,17 +18,6 @@ body {
 			@apply block text-gray-700 text-sm font-bold mb-2;
 		}
 	}
-
-	table {
-		@apply min-w-full border-collapse border border-gray-300;
-
-		.fond {
-			@apply bg-gray-800 text-white;	
-		}
-		.colonne {
-			@apply text-center border border-gray-300 px-4 py-2
-		}
-	}
 }  
   
 @layer components {

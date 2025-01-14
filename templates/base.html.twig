@@ -13,30 +13,6 @@
         {% endblock %}
     </head>
     <body>
-        <!-- Header -->
-        <header class="bg-cover bg-center h-80" style="background-image: url('{{asset('img/dovlet-hojayev-rfOFRwKHtJM-unsplash.jpg')}}')">
-            <div class="w-full">
-                <div class="flex flex-row justify-end">
-                    <nav class="navbar">
-                        <ul class="flex flex-row gap-4 mr-4 mt-4">
-                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-400 text-lg">Menu</a></li> <!-- menu -->
-                            <li><a href="{{ path('homepage') }}" class="text-white hover:text-yellow-400 text-lg">Réservation</a></li> <!-- reservation -->
-                            <li><a href="{{ path('app_agenda') }}" class="text-white hover:text-yellow-400 text-lg">Agenda</a></li>
-                            <li><a href="{{ path('app_login') }}" class="text-white hover:text-yellow-400 text-lg">Connexion</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="flex flex-col text-2xl mt-12">
-                    <h1 class="flex justify-center text-4xl font-bold text-yellow-400">Mood Bar</h1>
-                    <h2 class="flex justify-center text-lg text-white">Bar & Restaurant</h2>
-                </div>
-            </div>
-        </header>
         {% block body %}{% endblock %}
-        <!-- Footer -->
-        <footer class="flex justify-center items-center bg-gray-800 text-gray-400 py-4 px-4">
-            <p>&copy; 2025 Le Mood Bar. Tous droits réservés.</p>
-            <a href="{{ path('homepage') }}" class="ml-4 hover:underline underline-offset-4">Contact</a>
-        </footer>
     </body>
 </html>
