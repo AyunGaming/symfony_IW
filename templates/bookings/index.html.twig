@@ -3,33 +3,47 @@
 {% block title %}Bookings index{% endblock %}
 
 {% block body %}
-    <h1>Bookings index</h1>
+<div class="min-h-screen flex flex-col">
+    <section class="flex-grow py-10 px-6">
+        <h1 class="text-3xl font-bold text-center text-yellow-400 mb-6">Index des Réservations</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="colonne">Id</th>
-                <th class="colonne">OrderDate</th>
-                <th class="colonne">actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for booking in bookings %}
-            <tr class="fond">
-                <td class="colonne">{{ booking.id }}</td>
-                <td class="colonne">{{ booking.orderDate ? booking.orderDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_bookings_show', {'id': booking.id}) }}">show</a>
-                    <a href="{{ path('app_bookings_edit', {'id': booking.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr class="fond">
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="text-right mb-4">
+            <a href="{{ path('app_bookings_new') }}" class="btn">
+                Créer une nouvelle réservation
+            </a>
+        </div>
 
-    <a href="{{ path('app_bookings_new') }}">Create new</a>
+        <table>
+            <thead>
+                <tr class="fond">
+                    <th class="colonne">Id</th>
+                    <th class="colonne">Date de réservation</th>
+                    <th class="colonne">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td class="colonne">{{ booking.id }}</td>
+                    <td class="colonne">{{ booking.orderDate ? booking.orderDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td class="colonne text-center w-32">
+                        <a href="{{ path('app_bookings_show', {'id': booking.id}) }}"
+                            class="inline-flex items-center justify-center text-gray-800 hover:text-gray-800 mr-4">
+                                    <img src="{{ asset('img/eye.svg') }}" alt="Voir" class="w-6 h-6">
+                        </a> 
+                        <a href="{{ path('app_bookings_edit', {'id': booking.id}) }}"
+                            class="inline-flex items-center justify-center text-gray-800 hover:text-gray-800">
+                                    <img src="{{ asset('img/pen.svg') }}" alt="Modifier" class="w-6 h-6">
+                        </a> 
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-center py-4">Aucune réservation trouvée.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</div>
 {% endblock %}

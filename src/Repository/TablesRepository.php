@@ -44,6 +44,7 @@ class TablesRepository extends ServiceEntityRepository
 	{
 		return $this->createQueryBuilder('t')
 			->andWhere('t.reservation IS NULL')
+			->setMaxResults(1)
 			->getQuery()
 			->getOneOrNullResult();
 	}

@@ -1,4 +1,29 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% block body %}
+    <div class="max-w-4xl mx-auto my-8 p-2 bg-gray-800 rounded-lg">
+        {{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+            <div>
+                {{ form_label(form.orderDate, 'Order date', {'label_attr': {'class': 'block text-gray-800 font-bold mb-2'}}) }}
+                {{ form_widget(form.orderDate, {'attr': {'class': 'w-full px-4 py-2 rounded border-gray-800 text-gray-800'}}) }}
+                {{ form_errors(form.orderDate) }}
+            </div>
+
+            <div>
+                {{ form_label(form.nbPeople, 'Nb people', {'label_attr': {'class': 'block text-gray-800 font-bold mb-2'}}) }}
+                {{ form_widget(form.nbPeople, {'attr': {'class': 'w-full px-4 py-2 rounded border-gray-800 text-gray-800'}}) }}
+                {{ form_errors(form.nbPeople) }}
+            </div>
+
+            <div class="text-right">
+                <button type="submit" class="bg-gray-800 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded">
+                    Enregistrer
+                </button>
+            </div>
+            <!-- Bouton retour vers la liste des événements -->
+            <div class="mt-4 text-left">
+                <a href="{{ path('app_bookings_index') }}" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-600">
+                    Retour à la liste des événements
+                </a>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

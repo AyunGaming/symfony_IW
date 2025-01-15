@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\TablesRepository;
+use App\Entity\Bookings;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TablesRepository;
 
 #[ORM\Entity(repositoryClass: TablesRepository::class)]
 #[ORM\Table(name: 'seats')]
