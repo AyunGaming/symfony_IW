@@ -3,9 +3,7 @@
 {% block title %}New Bookings{% endblock %}
 
 {% block body %}
-    <h1>Create new Bookings</h1>
-
+    <h1 class="flex justify-center text-3xl mt-4 text-yellow-400">Créer une nouvelle réservation</h1>
     {{ include('bookings/_form.html.twig') }}
 
-    <a href="{{ path('app_bookings_index') }}">back to list</a>
 {% endblock %}

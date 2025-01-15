@@ -23,7 +23,11 @@
                             <li><a href="{{ path('app_menu') }}" class="text-white hover:text-yellow-400 text-lg">Menu</a></li> 
                             <li><a href="{{ path('app_bookings_index') }}" class="text-white hover:text-yellow-400 text-lg">Réservation</a></li>
                             <li><a href="{{ path('app_agenda') }}" class="text-white hover:text-yellow-400 text-lg">Agenda</a></li>
-                            <li><a href="{{ path('app_login') }}" class="text-white hover:text-yellow-400 text-lg">Connexion</a></li>
+                            {% if app.user %}
+                                <li><a href="{{ path('app_logout') }}" class="text-white hover:text-yellow-400 text-lg">Déconnexion</a></li>
+                            {% else %}
+                                <li><a href="{{ path('app_login') }}" class="text-white hover:text-yellow-400 text-lg">Connexion</a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
@@ -33,7 +37,9 @@
                 </div>
             </div>
         </header>
+
         {% block body %}{% endblock %}
+
         <!-- Footer -->
         <footer class="flex justify-center items-center bg-gray-800 text-gray-400 py-4 px-4">
             <p>&copy; 2025 Le Mood Bar. Tous droits réservés.</p>
