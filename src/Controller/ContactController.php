@@ -32,6 +32,7 @@ class ContactController extends AbstractController
                 $mailer->send($email);
 
                 $this->addFlash('success', 'Your email was sent successfully!');
+                return $this->redirect($request->getUri());
             } catch (\Exception $e) {
                 $this->addFlash('error', 'An error occurred while sending your email: ' . $e->getMessage());
             }
