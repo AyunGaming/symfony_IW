@@ -23,7 +23,7 @@ class Product
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $price = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\ManyToOne(cascade: ['persist', 'remove'], inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
