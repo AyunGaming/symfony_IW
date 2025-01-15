@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bookings{% endblock %}
+
+{% block body %}
+    <section class="w-full max-w-xs grid grid-flow-rows auto-rows-min justify-center m-auto rounded-lg shadow-md mt-10">
+        <span class="font-bold font-2xl">Réservation n°{{ booking.id }} - Table n°{{ booking.tables.id }}</span><br>
+        <span class="block mt-4">
+            Réservé pour le {{ booking.orderDate|date('d/m/Y H:i') }} au nom de {{ booking.user.lastName }}
+            pour {{ booking.nbPeople }} personne(s)
+        </span>
+
+        <div class="grid grid-cols-3 grid-rows-1 gap-4 h-8 mt-4">
+            <a href="{{ path('app_bookings_index') }}">back to list</a>
+            <a href="{{ path('app_bookings_edit', {'id': booking.id}) }}">edit</a>
+            {{ include('bookings/_delete_form.html.twig') }}
+        </div>
+    </section>
+{% endblock %}
