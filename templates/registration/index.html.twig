@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<h1 class="text-center text-3xl font-bold text-yellow-400 my-4">Créer un compte</h1>
+
+<section class="max-w-lg mx-auto p-6 my-8 bg-gray-800 rounded-lg shadow-md">
+    {{ form_start(registrationForm, {'attr': {'class': 'space-y-4'}}) }}
+
+    <div>
+        {{ form_row(registrationForm.firstName, {
+            'attr': {'class': 'w-full px-4 py-2 rounded border-gray-300 text-gray-900'}
+        }) }}
+    </div>
+
+    <div>
+        {{ form_row(registrationForm.lastName, {
+            'attr': {'class': 'w-full px-4 py-2 rounded border-gray-300 text-gray-900'}
+        }) }}
+    </div>
+
+    <div>
+        {{ form_row(registrationForm.email, {
+            'attr': {'class': 'w-full px-4 py-2 rounded border-gray-300 text-gray-900'}
+        }) }}
+    </div>
+
+    <div>
+        {{ form_row(registrationForm.password, {
+            'attr': {'class': 'w-full px-4 py-2 rounded border-gray-300 text-gray-900'}
+        }) }}
+    </div>
+
+    <div class="text-right">
+        <button class="bg-gray-800 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded" type="submit">
+            S'inscrire
+        </button>
+    </div>
+
+    {{ form_end(registrationForm) }}
+</section>
+{% endblock %}
