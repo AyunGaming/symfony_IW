@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% import '/includes/productList.html.twig' as productList %}
+
+{% block title %}Menu{% endblock %}
+
+{% block body %}
+<div class="min-h-screen flex flex-col">
+    <main class="flex-grow">
+        {{ productList.show(categories) }}
+    </main>
+</div>
+{% endblock %}

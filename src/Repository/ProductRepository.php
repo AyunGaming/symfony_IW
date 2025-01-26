@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Order;
+use App\Entity\OrderProduct;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -40,4 +42,15 @@ class ProductRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+	public function findProductsInOrder(Order $order) {
+		return $this->createQueryBuilder('p')
+			->select('p, op.quantity')
+			->from(Product::class, 'product')
+			->innerJoin(OrderProduct::class, 'op', 'WITH', 'op.product = p')
+			->where('op.orderLine = :o')
+			->setParameter('o', $order)
+			->getQuery()
+			->getResult();
+	}
 }

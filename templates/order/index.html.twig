@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des commandes !{% endblock %}
+
+{% block body %}
+    <div class="min-h-screen flex flex-col">
+        <section class="flex-grow py-10 px-6">
+            <h1 class="text-3xl font-bold text-center text-yellow-400 mb-6">Liste des commandes</h1>
+            <table>
+                <thead>
+                <tr class="fond">
+                    <th class="colonne">Id</th>
+                    <th class="colonne">Table</th>
+                    <th class="colonne">Status</th>
+                    <th class="colonne">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td class="colonne">{{ order.id }}</td>
+                        <td class="colonne">{{ order.seat.id }}</td>
+                        <td class="colonne">{{ order.status.value }}</td>
+                        {% if order.status is not constant('App\\Entity\\OrderStatus::FINISHED') %}
+                            <td class="colonne flex justify-center">
+                                <!-- Bouton Modifier -->
+                                <a href="{{ path('app_order_edit', {'id': order.id}) }}"
+                                   class="inline-flex items-center justify-center text-gray-800 hover:text-gray-800 mr-4">
+                                    <img src="{{ asset('img/pen.svg') }}" alt="Modifier" class="w-6 h-6">
+                                </a>
+
+                                <!-- Bouton Supprimer -->
+                                <a href="{{ path('homepage', {'id': order.id}) }}"
+                                   class="inline-flex items-center justify-center text-red-500 hover:text-red-700"
+                                   onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');">
+                                    <img src="{{ asset('img/trash-bin.svg') }}" alt="Supprimer" class="w-6 h-6">
+                                </a>
+                            </td>
+                        {% else %}
+                            <td class="colonne flex justify-center">Commande fermée</td>
+                        {% endif %}
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center py-4">Aucune commande trouvée.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
+{% endblock %}
