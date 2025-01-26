@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,13 +27,15 @@ class SecurityController extends AbstractController
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(Security $security): void
+    public function logout(Security $security, EventRepository $eventRepository): void
     {
 		$response = $security->logout();
 
 		// you can also disable the csrf logout
 		$response = $security->logout(false);
 
-		$this->redirectToRoute('homepage');
+		$this->render('landing_page/index.html.twig', [
+			'firstEvent' => $eventRepository->findOneBy([], ['date' => 'ASC'])
+		]);
     }
 }

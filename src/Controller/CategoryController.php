@@ -12,7 +12,7 @@ class CategoryController extends AbstractController
     #[Route('/menu', name: 'app_menu')]
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('category/index.html.twig', [
+        return $this->render('menu/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }

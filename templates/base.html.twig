@@ -33,6 +33,15 @@
                 </div>
             </div>
         </header>
+
+        {% for type, messages in app.flashes(['success', 'info', 'warning', 'danger']) %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         {% block body %}{% endblock %}
         <!-- Footer -->
         <footer class="flex justify-center items-center bg-gray-800 text-gray-400 py-4 px-4">
