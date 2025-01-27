@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="flex justify-center text-3xl mt-4 text-yellow-400">Contact</h1>
+    <div class="max-w-4xl mx-auto my-8 p-2 bg-gray-800 rounded-lg">
+        {{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+            <div>
+                {{ form_label(form.sender, 'Votre email', {'label_attr': {'class': 'block text-gray-800 font-bold mb-2'}}) }}
+                {{ form_widget(form.sender, {'attr': {'class': 'w-full px-4 py-2 rounded border-gray-800 text-gray-800'}}) }}
+                {{ form_errors(form.sender) }}
+            </div>
+
+            <div>
+                {{ form_label(form.object, 'Objet', {'label_attr': {'class': 'block text-gray-800 font-bold mb-2'}}) }}
+                {{ form_widget(form.object, {'attr': {'class': 'w-full px-4 py-2 rounded border-gray-800 text-gray-800'}}) }}
+                {{ form_errors(form.object) }}
+            </div>
+
+            <div>
+                {{ form_label(form.message, 'Message', {'label_attr': {'class': 'block text-gray-800 font-bold mb-2'}}) }}
+                {{ form_widget(form.message, {'attr': {'class': 'w-full px-4 py-2 rounded border-gray-800 text-gray-800'}}) }}
+                {{ form_errors(form.message) }}
+            </div>
+
+            <div class="text-right">
+                <button type="submit" class="bg-gray-800 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded">
+                    Envoyer
+                </button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
