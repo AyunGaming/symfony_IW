@@ -27,9 +27,9 @@ class SecurityController extends AbstractController
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
-    public function logout(Security $security, EventRepository $eventRepository): void
+    public function logout(Security $security, EventRepository $eventRepository)
     {
-    $response = $security->logout();
+    	$response = $security->logout();
 
 		// you can also disable the csrf logout
 		$response = $security->logout(false);
@@ -37,7 +37,7 @@ class SecurityController extends AbstractController
 		$this->render('landing_page/index.html.twig', [
 			'firstEvent' => $eventRepository->findOneBy([], ['date' => 'ASC'])
 		]);
-    return $this->redirectToRoute('homepage');
+		return $this->redirectToRoute('homepage');
     }
     
 }

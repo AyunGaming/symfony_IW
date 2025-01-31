@@ -4,16 +4,35 @@
 {% block title %}Modifier une commande{% endblock %}
 
 {% block body %}
-	<aside>
-		<p>Détail de la commande</p>
-		{% for orderProduct in orderProducts %}
-			<p>{{ orderProduct[0].name }} - {{ orderProduct[0].price }}€ x {{ orderProduct["quantity"] }}</p>
-		{% endfor %}
-		<p class="mt-10">Total : {{ total }}€</p>
-		<div class="mt-4">
-			<a href="{{ path('app_order') }}" class="btn btn-primary">Retour</a>
-			<a href="{{ path('app_order_close', {'id': order.id}) }}" class="btn btn-primary">Terminer la commande</a>
+
+<div class="flex bg-gray-100">
+	<div class="w-96 min-h-screen py-10 px-4" style="box-shadow: 10px 0 5px -2px #cccccc; position: sticky !important; top: 0; align-self: flex-start;">
+		<h4 class="text-2xl font-bold text-gray-800 pb-4 mb-10 border-b-2 border-yellow-400">Détail de la commande</h4>
+		<div class="h-80 border-b-2" style="overflow-y: auto;">
+			{% for orderProduct in orderProducts %}
+				<p class="flex flex-row justify-between items-center line bg-white rounded-lg mb-2" style="box-shadow: 4px 2px 2px #ababab">
+					<span class="px-2">
+						{{ orderProduct[0].name }}
+					</span>
+					<span class="bg-gray-100 p-2">
+						 {{ orderProduct[0].price }}€ x {{ orderProduct["quantity"] }}
+					</span>
+				</p>
+			{% endfor %}
 		</div>
-	</aside>
-	{{ productList.showBtn(categories, order) }}
+		<p class="mt-10 text-right mb-10 border-b-2 border-yellow-400"><span class=" text-lg font-bold line text-yellow-500">Total :</span> {{ total }}€</p>
+		<div class="mt-4 flex justify-between">
+			<a href="{{ path('app_order') }}" class="bg-gray-800 text-white px-4 py-2 mb-4 text-center rounded hover:bg-yellow-400 flex">
+				Retour
+			</a>
+
+			<a href="{{ path('app_order_close', {'id': order.id}) }}" class="bg-gray-800 text-white px-4 py-2 mb-4 text-center rounded hover:bg-yellow-400 flex">
+				Terminer la commande
+			</a>
+		</div>
+	</div>
+	<div class="px-6 w-full">
+		{{ productList.showBtn(categories, order) }}
+	</div>
+</div>
 {% endblock %}
